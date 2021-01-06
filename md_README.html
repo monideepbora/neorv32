@@ -68,7 +68,7 @@ $(function() {
 <div class="textblock"><p><a href="https://github.com/stnolting/neorv32"><img src="https://raw.githubusercontent.com/stnolting/neorv32/master/docs/figures/neorv32_logo.png" alt="NEORV32" class="inline"/></a></p>
 <h1><a class="anchor" id="autotoc_md0"></a>
 The NEORV32 RISC-V Processor</h1>
-<p><a href="https://travis-ci.com/stnolting/neorv32"><img src="https://travis-ci.com/stnolting/neorv32.svg?branch=master" alt="Build Status" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/stnolting/neorv32/blob/master/LICENSE"><img src="https://img.shields.io/github/license/stnolting/neorv32" alt="license" class="inline"/></a> <a href="https://github.com/stnolting/neorv32/releases"><img src="https://img.shields.io/github/v/release/stnolting/neorv32" alt="release" class="inline"/></a></p>
+<p><a href="https://github.com/stnolting/neorv32/actions?query=workflow%3A%22Processor+Check%22"><img src="https://github.com/stnolting/neorv32/workflows/Processor%20Check/badge.svg" alt="Processor Check" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/stnolting/neorv32/actions?query=workflow%3A%22RISC-V+Compliance%22"><img src="https://github.com/stnolting/neorv32/workflows/RISC-V%20Compliance/badge.svg" alt="RISC-V Compliance" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/stnolting/neorv32/blob/master/LICENSE"><img src="https://img.shields.io/github/license/stnolting/neorv32" alt="license" class="inline"/></a> <a href="https://github.com/stnolting/neorv32/releases"><img src="https://img.shields.io/github/v/release/stnolting/neorv32" alt="release" class="inline"/></a></p>
 <ul>
 <li><a href="#Overview">Overview</a></li>
 <li><a href="#Status">Project Status</a></li>
@@ -145,11 +145,11 @@ Status</h3>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">Project component  </th><th class="markdownTableHeadLeft">CI status  </th><th class="markdownTableHeadLeft">Note   </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/neorv32">NEORV32 processor</a>  </td><td class="markdownTableBodyLeft"><a href="https://travis-ci.com/stnolting/neorv32"><img src="https://travis-ci.com/stnolting/neorv32.svg?branch=master" alt="Build Status" style="pointer-events: none;" class="inline"/></a>  </td><td class="markdownTableBodyLeft"><a href="https://stnolting.github.io/neorv32/files.html"><img src="https://img.shields.io/badge/SW%20documentation-gh--pages-blue" alt="sw doc" class="inline"/></a>   </td></tr>
+<td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/neorv32">NEORV32 processor</a>  </td><td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/neorv32/actions?query=workflow%3A%22Processor+Check%22"><img src="https://github.com/stnolting/neorv32/workflows/Processor%20Check/badge.svg" alt="Processor Check" style="pointer-events: none;" class="inline"/></a>  </td><td class="markdownTableBodyLeft"><a href="https://stnolting.github.io/neorv32/files.html"><img src="https://img.shields.io/badge/SW%20documentation-gh--pages-blue" alt="sw doc" class="inline"/></a>   </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/riscv_gcc_prebuilt">Pre-built toolchain</a>  </td><td class="markdownTableBodyLeft"><a href="https://travis-ci.com/stnolting/riscv_gcc_prebuilt"><img src="https://travis-ci.com/stnolting/riscv_gcc_prebuilt.svg?branch=master" alt="Build Status" style="pointer-events: none;" class="inline"/></a>  </td><td class="markdownTableBodyLeft"></td></tr>
+<td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/riscv_gcc_prebuilt">Pre-built toolchain</a>  </td><td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/riscv_gcc_prebuilt/actions?query=workflow%3A%22Test+Toolchains%22"><img src="https://github.com/stnolting/riscv_gcc_prebuilt/workflows/Test%20Toolchains/badge.svg" alt="Test Toolchains" style="pointer-events: none;" class="inline"/></a>  </td><td class="markdownTableBodyLeft"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft">RISC-V compliance test  </td><td class="markdownTableBodyLeft"></td><td class="markdownTableBodyLeft">See <a href="https://github.com/stnolting/neorv32/blob/master/riscv-compliance/README.md">riscv-compliance/README.md</a>   </td></tr>
+<td class="markdownTableBodyLeft">RISC-V compliance test  </td><td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/neorv32/actions?query=workflow%3A%22RISC-V+Compliance%22"><img src="https://github.com/stnolting/neorv32/workflows/RISC-V%20Compliance/badge.svg" alt="RISC-V Compliance" style="pointer-events: none;" class="inline"/></a>  </td><td class="markdownTableBodyLeft">See <a href="https://github.com/stnolting/neorv32/blob/master/riscv-compliance/README.md">riscv-compliance/README.md</a>   </td></tr>
 </table>
 <h3><a class="anchor" id="autotoc_md5"></a>
 To-Do / Wish List / Help Wanted</h3>
@@ -160,7 +160,7 @@ To-Do / Wish List / Help Wanted</h3>
 <li>Add <em>data</em> cache</li>
 <li>Burst mode for the external memory/bus interface</li>
 <li>RISC-V <code>F</code> (using <code>Zfinx</code>?) CPU extension (single-precision floating point) <em>[planning]</em></li>
-<li>RISC-V <code>B</code> CPU extension (<a href="https://github.com/riscv/riscv-bitmanip">bitmanipulation</a>) <em>[shelved]</em></li>
+<li>RISC-V <code>B</code> (using <code>Zbb</code>?) CPU extension (<a href="https://github.com/riscv/riscv-bitmanip">bitmanipulation</a>) <em>[planning]</em></li>
 <li>Synthesis results (+ wrappers?) for more/specific platforms</li>
 <li>More support for FreeRTOS (like <em>all</em> traps)</li>
 <li>Port additional RTOSs (like <a href="https://github.com/zephyrproject-rtos/zephyr">Zephyr</a> or <a href="https://www.riot-os.org">RIOT</a>)</li>
@@ -559,8 +559,7 @@ Proprietary  Notice</h4>
 Acknowledgements</h2>
 <p><a href="https://riscv.org/"><img src="https://raw.githubusercontent.com/stnolting/neorv32/master/docs/figures/riscv_logo.png" alt="RISC-V" class="inline"/></a></p>
 <p><a href="https://riscv.org/">RISC-V</a> - Instruction Sets Want To Be Free!</p>
-<p><a href="https://travis-ci.com/stnolting/neorv32"><img src="https://travis-ci.com/images/logos/TravisCI-Full-Color.png" alt="Continous Integration provided by Travis CI" class="inline"/></a></p>
-<p>Continous integration provided by <a href="https://travis-ci.com/stnolting/neorv32">Travis CI</a> and powered by <a href="https://github.com/ghdl/ghdl">GHDL</a>.</p>
+<p>Continous integration provided by <a href="https://github.com/features/actions">:octocat: GitHub Actions</a> and powered by <a href="https://github.com/ghdl/ghdl">GHDL</a>.</p>
 <p><img src="https://raw.githubusercontent.com/stnolting/neorv32/master/docs/figures/oshw_logo.png" alt="Open Source Hardware Logo https://www.oshwa.org" class="inline"/></p>
 <p>This project is not affiliated with or endorsed by the Open Source Initiative (<a href="https://www.oshwa.org">https://www.oshwa.org</a> / <a href="https://opensource.org">https://opensource.org</a>).</p>
 <hr  />
