@@ -94,7 +94,7 @@ Key Features</h3>
 </li>
 <li>Configurable RISC-V CPU extensions<ul>
 <li><code>A</code> - atomic memory access instructions (optional)</li>
-<li><code>B</code> - Bit manipulation instructions (optional) (not officially ratified yet!)</li>
+<li><code>B</code> - Bit manipulation instructions (optional)</li>
 <li><code>C</code> - compressed instructions (16-bit) (optional)</li>
 <li><code>E</code> - embedded CPU (reduced register file (optional)</li>
 <li><code>I</code> - base integer instruction set (always enabled)</li>
@@ -240,7 +240,7 @@ NEORV32 CPU Features</h3>
 </ul>
 <p><b>Bit manipulation instructions</b> (<code>B</code> extension implying <code>Zbb</code> extension):</p><ul>
 <li>:warning: RISC-V <code>B</code> extensions is not officially ratified yet!</li>
-<li>Support via intrisc library (see <a href="https://github.com/stnolting/neorv32/blob/master/sw/example/bit_manipulation/README.md`"><code>sw/example/bit_manipulation</code></a>)</li>
+<li>Support via intrisc library (see <a href="https://github.com/stnolting/neorv32/tree/master/sw/example/bit_manipulation"><code>sw/example/bit_manipulation</code></a>)</li>
 <li>Only the <code>Zbb</code> base subset is supported yet</li>
 <li>Supported instructions: <code>CLZ</code> <code>CTZ</code> <code>CPOP</code> <code>SEXT.B</code> <code>SEXT.H</code> <code>MIN[U]</code> <code>MAX[U]</code> <code>ANDN</code> <code>ORN</code> <code>XNOR</code> <code>ROL</code> <code>ROR</code> <code>RORI</code> <code>zext</code>(<em>pseudo-instruction</em> for <code>PACK rd, rs, zero</code>) <code>rev8</code>(<em>pseudo-instruction</em> for <code>GREVI rd, rs, -8</code>) <code>orc.b</code>(<em>pseudo-instruction</em> for <code>GORCI rd, rs, 7</code>)</li>
 </ul>
@@ -280,7 +280,7 @@ NEORV32 CPU Features</h3>
 <li>Additional machine CSRs: <code>pmpcfg*</code>(0..15) <code>pmpaddr*</code>(0..63)</li>
 </ul>
 <p><b>Privileged architecture / Hardware performance monitors</b> (<code>HPM</code>, requires <code>Zicsr</code> extension):</p><ul>
-<li>Configurable number of counter (0..29)</li>
+<li>Configurable number of counters (0..29)</li>
 <li>Additional machine CSRs: <code>mhpmevent*</code>(3..31) <code>[m]hpmcounter*[h]</code>(3..31)</li>
 </ul>
 <h3><a class="anchor" id="autotoc_md9"></a>
@@ -291,7 +291,7 @@ NEORV32 CPU Features</h3>
 <li>The physical memory protection (<b>PMP</b>) only supports <code>NAPOT</code> mode yet and a minimal granularity of 8 bytes</li>
 <li>The <code>A</code> extension only implements <code>lr.w</code> and <code>sc.w</code> instructions yet. However, these instructions are sufficient to emulate all further AMO operations</li>
 <li>The <code>mcause</code> trap code <code>0x80000000</code> (originally reserved in the RISC-V specs) is used to indicate a hardware reset (as "non-maskable interrupt")</li>
-<li>The bit manipulation extension is not yet officially ratified, but is expected to stay unchanged. There is no software support in the upstream GCC RISC-V port yet. However, an intrinsic library is provided to utilize the provided bit manipulation extension from C-language code (see <code>sw/example/bit_manipulation</code>). NEORV32 <code>B</code> extension is compliant to spec. version "0.94-draft".</li>
+<li>The bit manipulation extension is not yet officially ratified, but is expected to stay unchanged. There is no software support in the upstream GCC RISC-V port yet. However, an intrinsic library is provided to utilize the provided bit manipulation extension from C-language code (see <a href="https://github.com/stnolting/neorv32/tree/master/sw/example/bit_manipulation"><code>sw/example/bit_manipulation</code></a>). NEORV32's <code>B</code>/<code>Zbb</code> extension is compliant to spec. version "0.94-draft".</li>
 </ul>
 <h3><a class="anchor" id="autotoc_md10"></a>
 NEORV32-Specific CPU Extensions</h3>
