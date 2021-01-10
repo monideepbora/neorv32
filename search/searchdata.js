@@ -6,7 +6,7 @@ var indexSectionsWithContent =
   3: "_centu",
   4: "ens",
   5: "cehprstuw",
-  6: "abcefgimnpstuwx",
+  6: "abcefgimnprstuwx",
   7: "r"
 };
 

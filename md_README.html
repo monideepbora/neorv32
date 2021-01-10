@@ -92,15 +92,19 @@ Key Features</h3>
 <li>Subset of the <em>Privileged Architecture Specification</em> <a href="https://github.com/stnolting/neorv32/blob/master/docs/riscv-spec.pdf">(Version 1.12-draft)</a></li>
 </ul>
 </li>
-<li>Optional RISC-V CPU extensions<ul>
-<li><code>A</code> - atomic memory access instructions</li>
-<li><code>C</code> - compressed instructions (16-bit)</li>
-<li><code>E</code> - embedded CPU (reduced register file)</li>
-<li><code>M</code> - integer multiplication and division hardware</li>
-<li><code>U</code> - less-privileged <em>user mode</em></li>
-<li><code>Zicsr</code> - control and status register access instructions (+ exception/irq system)</li>
-<li><code>Zifencei</code> - instruction stream synchronization</li>
-<li><code>PMP</code> - physical memory protection</li>
+<li>Configurable RISC-V CPU extensions<ul>
+<li><code>A</code> - atomic memory access instructions (optional)</li>
+<li><code>B</code> - Bit manipulation instructions (optional) (not officially ratified yet!)</li>
+<li><code>C</code> - compressed instructions (16-bit) (optional)</li>
+<li><code>E</code> - embedded CPU (reduced register file (optional)</li>
+<li><code>I</code> - base integer instruction set (always enabled)</li>
+<li><code>M</code> - integer multiplication and division hardware (optional)</li>
+<li><code>U</code> - less-privileged <em>user mode</em> (optional)</li>
+<li><code>X</code> - NEORV32_specific extensions (always enabled)</li>
+<li><code>Zicsr</code> - control and status register access instructions (+ exception/irq system) (optional)</li>
+<li><code>Zifencei</code> - instruction stream synchronization (optional)</li>
+<li><code>PMP</code> - physical memory protection (optional)</li>
+<li><code>HPM</code> - hardware performance monitors (optional)</li>
 </ul>
 </li>
 <li>Full-scale RISC-V microcontroller system / <b>SoC</b> <a href="#NEORV32-Processor-Features"><b>NEORV32 Processor</b></a> with optional submodules<ul>
@@ -157,12 +161,12 @@ Status</h3>
 To-Do / Wish List / Help Wanted</h3>
 <ul>
 <li>Use LaTeX for data sheet</li>
-<li>Further size and performance optimization <em>[work in progress]</em></li>
+<li>Further size and performance optimization</li>
 <li>Add associativity configuration for instruction cache</li>
 <li>Add <em>data</em> cache</li>
 <li>Burst mode for the external memory/bus interface</li>
-<li>RISC-V <code>F</code> (using <code>Zfinx</code>?) CPU extension (single-precision floating point) <em>[planning]</em></li>
-<li>RISC-V <code>B</code> (using <code>Zbb</code>?) CPU extension (<a href="https://github.com/riscv/riscv-bitmanip">bitmanipulation</a>) <em>[planning]</em></li>
+<li>RISC-V <code>F</code> (using <code>[Zfinx](<a href="https://github.com/riscv/riscv-zfinx/blob/master/Zfinx_spec.adoc">https://github.com/riscv/riscv-zfinx/blob/master/Zfinx_spec.adoc</a>)</code>?) CPU extension (single-precision floating point)</li>
+<li>Add template (HW module + intrinsics skeleton) for custom instructions?</li>
 <li>Synthesis results (+ wrappers?) for more/specific platforms</li>
 <li>More support for FreeRTOS (like <em>all</em> traps)</li>
 <li>Port additional RTOSs (like <a href="https://github.com/zephyrproject-rtos/zephyr">Zephyr</a> or <a href="https://www.riot-os.org">RIOT</a>)</li>
@@ -234,6 +238,12 @@ NEORV32 CPU Features</h3>
 <p><b>Atomic memory access</b> (<code>A</code> extension):</p><ul>
 <li>Supported instructions: <code>LR.W</code> (load-reservate) <code>SC.W</code> (store-conditional)</li>
 </ul>
+<p><b>Bit manipulation instructions</b> (<code>B</code> extension implying <code>Zbb</code> extension):</p><ul>
+<li>:warning: RISC-V <code>B</code> extensions is not officially ratified yet!</li>
+<li>Support via intrisc library (see <a href="https://github.com/stnolting/neorv32/blob/master/sw/example/bit_manipulation/README.md`"><code>sw/example/bit_manipulation</code></a>)</li>
+<li>Only the <code>Zbb</code> base subset is supported yet</li>
+<li>Supported instructions: <code>CLZ</code> <code>CTZ</code> <code>CPOP</code> <code>SEXT.B</code> <code>SEXT.H</code> <code>MIN[U]</code> <code>MAX[U]</code> <code>ANDN</code> <code>ORN</code> <code>XNOR</code> <code>ROL</code> <code>ROR</code> <code>RORI</code> <code>zext</code>(<em>pseudo-instruction</em> for <code>PACK rd, rs, zero</code>) <code>rev8</code>(<em>pseudo-instruction</em> for <code>GREVI rd, rs, -8</code>) <code>orc.b</code>(<em>pseudo-instruction</em> for <code>GORCI rd, rs, 7</code>)</li>
+</ul>
 <p><b>Privileged architecture / CSR access</b> (<code>Zicsr</code> extension):</p><ul>
 <li>Privilege levels: <code>M-mode</code> (Machine mode)</li>
 <li>CSR access instructions: <code>CSRRW</code> <code>CSRRS</code> <code>CSRRC</code> <code>CSRRWI</code> <code>CSRRSI</code> <code>CSRRCI</code></li>
@@ -262,21 +272,26 @@ NEORV32 CPU Features</h3>
 <p><b>Privileged architecture / User mode</b> (<code>U</code> extension, requires <code>Zicsr</code> extension):</p><ul>
 <li>Privilege levels: <code>M-mode</code> (Machine mode) + <code>U-mode</code> (User mode)</li>
 </ul>
-<p><b>Privileged architecture / instruction stream synchronization</b> (<code>Zifencei</code> extension):</p><ul>
+<p><b>Privileged architecture / Instruction stream synchronization</b> (<code>Zifencei</code> extension):</p><ul>
 <li>System instructions: <code>FENCE.I</code> (among others, used to clear and reload instruction cache)</li>
 </ul>
 <p><b>Privileged architecture / Physical memory protection</b> (<code>PMP</code>, requires <code>Zicsr</code> extension):</p><ul>
-<li>Configurable number of regions</li>
+<li>Configurable number of regions (0..63)</li>
 <li>Additional machine CSRs: <code>pmpcfg*</code>(0..15) <code>pmpaddr*</code>(0..63)</li>
 </ul>
+<p><b>Privileged architecture / Hardware performance monitors</b> (<code>HPM</code>, requires <code>Zicsr</code> extension):</p><ul>
+<li>Configurable number of counter (0..29)</li>
+<li>Additional machine CSRs: <code>mhpmevent*</code>(3..31) <code>[m]hpmcounter*[h]</code>(3..31)</li>
+</ul>
 <h3><a class="anchor" id="autotoc_md9"></a>
-Non-RISC-V-Compliant Issues</h3>
+:warning: Non-RISC-V-Compliant Issues</h3>
 <ul>
 <li>CPU and Processor are BIG-ENDIAN, but this should be no problem as the external memory bus interface provides big- and little-endian configurations</li>
 <li><code>misa</code> CSR is read-only - no dynamic enabling/disabling of synthesized CPU extensions during runtime; for compatibility: write accesses (in m-mode) are ignored and do not cause an exception</li>
 <li>The physical memory protection (<b>PMP</b>) only supports <code>NAPOT</code> mode yet and a minimal granularity of 8 bytes</li>
 <li>The <code>A</code> extension only implements <code>lr.w</code> and <code>sc.w</code> instructions yet. However, these instructions are sufficient to emulate all further AMO operations</li>
-<li>The <code>mcause</code> trap code <code>0x80000000</code> (originally reserved in the RISC-V specs) is used to indicate a hardware reset (as "non-maskable interrupt").</li>
+<li>The <code>mcause</code> trap code <code>0x80000000</code> (originally reserved in the RISC-V specs) is used to indicate a hardware reset (as "non-maskable interrupt")</li>
+<li>The bit manipulation extension is not yet officially ratified, but is expected to stay unchanged. There is no software support in the upstream GCC RISC-V port yet. However, an intrinsic library is provided to utilize the provided bit manipulation extension from C-language code (see <code>sw/example/bit_manipulation</code>). NEORV32 <code>B</code> extension is compliant to spec. version "0.94-draft".</li>
 </ul>
 <h3><a class="anchor" id="autotoc_md10"></a>
 NEORV32-Specific CPU Extensions</h3>
@@ -291,7 +306,7 @@ FPGA Implementation Results</h2>
 <h3><a class="anchor" id="autotoc_md12"></a>
 NEORV32 CPU</h3>
 <p>This chapter shows exemplary implementation results of the NEORV32 CPU for an <b>Intel Cyclone IV EP4CE22F17C6N FPGA</b> on a DE0-nano board. The design was synthesized using <b>Intel Quartus Prime Lite 20.1</b> ("balanced implementation"). The timing information is derived from the Timing Analyzer / Slow 1200mV 0C Model. If not otherwise specified, the default configuration of the CPU's generics is assumed (e.g. no physical memory protection, no hardware performance monitors). No constraints were used at all. The <code>u</code> and <code>Zifencei</code> extensions have a negligible impact on the hardware requirements.</p>
-<p>Results generated for hardware version <a href="https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md"><code>1.4.9.2</code></a>.</p>
+<p>Results generated for hardware version <a href="https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md"><code>1.4.9.10</code></a>.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">CPU Configuration   </th><th class="markdownTableHeadCenter">LEs   </th><th class="markdownTableHeadCenter">FFs   </th><th class="markdownTableHeadCenter">Memory bits   </th><th class="markdownTableHeadCenter">DSPs   </th><th class="markdownTableHeadCenter">f_max    </th></tr>
@@ -304,12 +319,14 @@ NEORV32 CPU</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyLeft"><code>rv32imc</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">2716   </td><td class="markdownTableBodyCenter">1165   </td><td class="markdownTableBodyCenter">2048   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">120 MHz    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><code>rv32imac</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">2736   </td><td class="markdownTableBodyCenter">1168   </td><td class="markdownTableBodyCenter">2048   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">122 MHz   </td></tr>
+<td class="markdownTableBodyLeft"><code>rv32imac</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">2736   </td><td class="markdownTableBodyCenter">1168   </td><td class="markdownTableBodyCenter">2048   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">120 MHz    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"><code>rv32imacb</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">3045   </td><td class="markdownTableBodyCenter">1260   </td><td class="markdownTableBodyCenter">2048   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">114 MHz   </td></tr>
 </table>
 <p>Setups with enabled "embedded CPU extension" <code>E</code> show the same LUT and FF utilization and identical f_max. However, the size of the register file is cut in half.</p>
 <h3><a class="anchor" id="autotoc_md13"></a>
 NEORV32 Processor-Internal Peripherals and Memories</h3>
-<p>Results generated for hardware version <a href="https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md"><code>1.4.9.2</code></a>.</p>
+<p>Results generated for hardware version <a href="https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md"><code>1.4.9.10</code></a>.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">Module   </th><th class="markdownTableHeadLeft">Description   </th><th class="markdownTableHeadRight">LEs   </th><th class="markdownTableHeadRight">FFs   </th><th class="markdownTableHeadRight">Memory bits   </th><th class="markdownTableHeadRight">DSPs    </th></tr>
