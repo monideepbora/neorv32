@@ -239,9 +239,10 @@ NEORV32 CPU Features</h3>
 <li>Supported instructions: <code>LR.W</code> (load-reservate) <code>SC.W</code> (store-conditional)</li>
 </ul>
 <p><b>Bit manipulation instructions</b> (<code>B</code> extension implying <code>Zbb</code> extension):</p><ul>
-<li>:warning: RISC-V <code>B</code> extensions is not officially ratified yet!</li>
+<li>:warning: RISC-V <code>B</code> extension is not officially ratified yet!</li>
+<li>Compatible to <a href="https://raw.githubusercontent.com/stnolting/neorv32/master/docs/bitmanip-draft.pdf">v0.94-draft</a> of the bit manipulation spec</li>
 <li>Support via intrisc library (see <a href="https://github.com/stnolting/neorv32/tree/master/sw/example/bit_manipulation"><code>sw/example/bit_manipulation</code></a>)</li>
-<li>Only the <code>Zbb</code> base subset is supported yet</li>
+<li>Only the <code>Zbb</code> base instructions subset is supported yet</li>
 <li>Supported instructions: <code>CLZ</code> <code>CTZ</code> <code>CPOP</code> <code>SEXT.B</code> <code>SEXT.H</code> <code>MIN[U]</code> <code>MAX[U]</code> <code>ANDN</code> <code>ORN</code> <code>XNOR</code> <code>ROL</code> <code>ROR</code> <code>RORI</code> <code>zext</code>(<em>pseudo-instruction</em> for <code>PACK rd, rs, zero</code>) <code>rev8</code>(<em>pseudo-instruction</em> for <code>GREVI rd, rs, -8</code>) <code>orc.b</code>(<em>pseudo-instruction</em> for <code>GORCI rd, rs, 7</code>)</li>
 </ul>
 <p><b>Privileged architecture / CSR access</b> (<code>Zicsr</code> extension):</p><ul>
