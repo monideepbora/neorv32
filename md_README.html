@@ -111,8 +111,8 @@ Key Features</h3>
 <li>optional embedded memories (instructions/data/bootloader, RAM/ROM) and caches</li>
 <li>timers (watch dog, RISC-V-compliant machine timer)</li>
 <li>serial interfaces (SPI, TWI, UART) and general purpose IO</li>
-<li>external bus interface (Wishbone / <a href="#AXI4-Connectivity">AXI4</a>)</li>
-<li><a href="#NEORV32-Processor-Features">more ...</a></li>
+<li></li>
+<li><a href="#NEORV32-Processor-Featurexternal bus interface (Wishbone / [AXI4](#AXI4-Connectivity))es">more ...</a></li>
 </ul>
 </li>
 <li>Software framework<ul>
@@ -462,9 +462,10 @@ Getting Started</h2>
 <h3><a class="anchor" id="autotoc_md23"></a>
 Toolchain</h3>
 <p>At first you need the <b>RISC-V GCC toolchain</b>. You can either <a href="https://github.com/riscv/riscv-gnu-toolchain">download the sources</a> and build the toolchain by yourself, or you can download a prebuilt one and install it.</p>
-<p>:warning: Keep in mind that – for instance – a <code>rv32imc</code> toolchain only provides library code compiled with compressed and <code>mul</code>/<code>div</code> instructions! Hence, this code cannot be executed (without emulation) on an architecture without these extensions!</p>
 <p>To build the toolchain by yourself, follow the official <a href="https://github.com/riscv/riscv-gnu-toolchain">build instructions</a>. Make sure to use the <code>ilp32</code> or <code>ilp32e</code> ABI.</p>
 <p><b>Alternatively</b>, you can download a prebuilt toolchain. I have uploaded the toolchains I am using to GitHub. These toolchains were compiled on a 64-bit x86 Ubuntu 20.04 LTS (Ubuntu on Windows, actually). Download the toolchain of choice: <a href="https://github.com/stnolting/riscv_gcc_prebuilt">:octocat: github.com/stnolting/riscv_gcc_prebuilt</a></p>
+<p>You can also use the toolchains provided by <a href="https://github.com/sifive/freedom-tools/releases">SiFive</a>. These are 64-bit toolchains that can also emit 32-bit RISC-V code. They were compiled for more sophisticated machines (<code>imac</code>) so the according hardware extensions are <em>mandatory</em></p>
+<p>:warning: Keep in mind that – for instance – a <code>rv32imc</code> toolchain only provides library code compiled with compressed and <code>mul</code>/<code>div</code> instructions! Hence, this code cannot be executed (without emulation) on an architecture without these extensions!</p>
 <h3><a class="anchor" id="autotoc_md24"></a>
 Dowload the NEORV32 Project</h3>
 <p>Get the sources of the NEORV32 Processor project. The simplest way is using <code>git clone</code> (suggested for easy project updates via <code>git pull</code>): </p><pre class="fragment">$ git clone https://github.com/stnolting/neorv32.git
