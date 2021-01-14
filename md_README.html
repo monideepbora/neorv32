@@ -83,7 +83,8 @@ The NEORV32 RISC-V Processor</h1>
 <h2><a class="anchor" id="autotoc_md1"></a>
 Overview</h2>
 <p>The NEORV32 Processor is a customizable microcontroller-like system on chip (SoC) that is based on the RISC-V-compliant NEORV32 CPU. The processor is intended as <em>ready-to-go</em> auxiliary processor within a larger SoC designs or as stand-alone custom microcontroller.</p>
-<p>The project’s change log is available in the <a href="https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md">CHANGELOG.md</a> file in the root directory of this repository. To see the changes between releases visit the project's <a href="https://github.com/stnolting/neorv32/releases">release page</a>. For more detailed information take a look at the <a href="https://raw.githubusercontent.com/stnolting/neorv32/master/docs/NEORV32.pdf">:page_facing_up: NEORV32 data sheet</a> (pdf).</p>
+<p>The project’s change log is available in the <a href="https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md">CHANGELOG.md</a> file in the root directory of this repository. To see the changes between releases visit the project's <a href="https://github.com/stnolting/neorv32/releases">release page</a>.</p>
+<p>The documentation of the software framework is available online on <a href="https://stnolting.github.io/neorv32/files.html">GitHub-pages</a>. For more detailed information take a look at the <a href="https://raw.githubusercontent.com/stnolting/neorv32/master/docs/NEORV32.pdf">:page_facing_up: NEORV32 data sheet</a> (pdf).</p>
 <h3><a class="anchor" id="autotoc_md2"></a>
 Key Features</h3>
 <ul>
@@ -92,7 +93,7 @@ Key Features</h3>
 <li>Subset of the <em>Privileged Architecture Specification</em> <a href="https://github.com/stnolting/neorv32/blob/master/docs/riscv-spec.pdf">(Version 1.12-draft)</a></li>
 </ul>
 </li>
-<li>Configurable RISC-V CPU extensions<ul>
+<li>Configurable RISC-V-compliant CPU extensions<ul>
 <li><code>A</code> - atomic memory access instructions (optional)</li>
 <li><code>B</code> - Bit manipulation instructions (optional)</li>
 <li><code>C</code> - compressed instructions (16-bit) (optional)</li>
@@ -119,6 +120,7 @@ Key Features</h3>
 <li>core libraries for high-level usage of the provided functions and peripherals</li>
 <li>application compilation based on <a href="https://github.com/stnolting/neorv32/blob/master/sw/example/blink_led/makefile">GNU makefiles</a></li>
 <li>GCC-based toolchain (<a href="https://github.com/stnolting/riscv_gcc_prebuilt">pre-compiled toolchains available</a>)</li>
+<li>bootloader with UART interface console</li>
 <li>runtime environment</li>
 <li>several example programs</li>
 <li><a href="https://github.com/stnolting/neorv32/blob/master/docs/doxygen_makefile_sw">doxygen-based</a> documentation: available on <a href="https://stnolting.github.io/neorv32/files.html">GitHub pages</a></li>
