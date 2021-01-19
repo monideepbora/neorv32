@@ -119,7 +119,7 @@ Key Features</h3>
 <li>Software framework<ul>
 <li>core libraries for high-level usage of the provided functions and peripherals</li>
 <li>application compilation based on <a href="https://github.com/stnolting/neorv32/blob/master/sw/example/blink_led/makefile">GNU makefiles</a></li>
-<li>GCC-based toolchain (<a href="https://github.com/stnolting/riscv_gcc_prebuilt">pre-compiled toolchains available</a>)</li>
+<li>GCC-based toolchain (<a href="https://github.com/stnolting/riscv-gcc-prebuilt">pre-compiled toolchains available</a>)</li>
 <li>bootloader with UART interface console</li>
 <li>runtime environment</li>
 <li>several example programs</li>
@@ -155,7 +155,7 @@ Status</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyLeft"><a href="https://stnolting.github.io/neorv32/files.html">SW Framework Documentation (online)</a>   </td><td class="markdownTableBodyLeft"><a href="https://stnolting.github.io/neorv32/files.html"><img src="https://github.com/stnolting/neorv32/workflows/Deploy%20SW%20Framework%20Documentation%20to%20GitHub-Pages/badge.svg" alt="Doc@GitHub-pages" style="pointer-events: none;" class="inline"/></a>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/riscv_gcc_prebuilt">Pre-built toolchains</a>   </td><td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/riscv_gcc_prebuilt/actions?query=workflow%3A%22Test+Toolchains%22"><img src="https://github.com/stnolting/riscv_gcc_prebuilt/workflows/Test%20Toolchains/badge.svg" alt="Test Toolchains" style="pointer-events: none;" class="inline"/></a>    </td></tr>
+<td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/riscv-gcc-prebuilt">Pre-built toolchains</a>   </td><td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/riscv-gcc-prebuilt/actions?query=workflow%3A%22Test+Toolchains%22"><img src="https://github.com/stnolting/riscv-gcc-prebuilt/workflows/Test%20Toolchains/badge.svg" alt="Test Toolchains" style="pointer-events: none;" class="inline"/></a>    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/neorv32/blob/master/riscv-compliance/README.md">RISC-V compliance test</a>   </td><td class="markdownTableBodyLeft"><a href="https://github.com/stnolting/neorv32/actions?query=workflow%3A%22RISC-V+Compliance%22"><img src="https://github.com/stnolting/neorv32/workflows/RISC-V%20Compliance/badge.svg" alt="RISC-V Compliance" style="pointer-events: none;" class="inline"/></a>   </td></tr>
 </table>
@@ -167,15 +167,13 @@ To-Do / Wish List / Help Wanted</h3>
 <li>Further expand associativity configuration of instruction cache (4x/8x set-associativity)</li>
 <li>Add data cache</li>
 <li>Burst mode for the external memory/bus interface</li>
-<li>RISC-V <code>F</code> (using <code>[Zfinx](<a href="https://github.com/riscv/riscv-zfinx/blob/master/Zfinx_spec.adoc">https://github.com/riscv/riscv-zfinx/blob/master/Zfinx_spec.adoc</a>)</code>?) CPU extension (single-precision floating point)</li>
+<li>RISC-V <code>F</code> (using <a href="https://github.com/riscv/riscv-zfinx/blob/master/Zfinx_spec.adoc"><code>Zfinx</code></a>?) CPU extension (single-precision floating point)</li>
 <li>Add template (HW module + intrinsics skeleton) for custom instructions?</li>
-<li>Synthesis results (+ wrappers?) for more/specific platforms</li>
+<li>Implement further RISC-V (or custom?) CPU extensions</li>
 <li>More support for FreeRTOS (like <em>all</em> traps)</li>
 <li>Port additional RTOSs (like <a href="https://github.com/zephyrproject-rtos/zephyr">Zephyr</a> or <a href="https://www.riot-os.org">RIOT</a>)</li>
 <li>Maybe port <a href="https://circuitpython.org/">CircuitPython</a> (just for fun)</li>
-<li>Implement further RISC-V (or custom?) CPU extensions</li>
 <li>Add debugger (<a href="https://github.com/riscv/riscv-debug-spec">RISC-V debug spec</a>)</li>
-<li>Add memory-mapped trigger to testbench to quit simulation (maybe using VHDL2008's <code>use std.env.finish</code>?)</li>
 <li>...</li>
 <li><a href="#ContributeFeedbackQuestions">Ideas?</a></li>
 </ul>
@@ -310,27 +308,27 @@ FPGA Implementation Results</h2>
 <h3><a class="anchor" id="autotoc_md12"></a>
 NEORV32 CPU</h3>
 <p>This chapter shows exemplary implementation results of the NEORV32 CPU for an <b>Intel Cyclone IV EP4CE22F17C6N FPGA</b> on a DE0-nano board. The design was synthesized using <b>Intel Quartus Prime Lite 20.1</b> ("balanced implementation"). The timing information is derived from the Timing Analyzer / Slow 1200mV 0C Model. If not otherwise specified, the default configuration of the CPU's generics is assumed (e.g. no physical memory protection, no hardware performance monitors). No constraints were used at all. The <code>u</code> and <code>Zifencei</code> extensions have a negligible impact on the hardware requirements.</p>
-<p>Results generated for hardware version <a href="https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md"><code>1.4.9.10</code></a>.</p>
+<p>Results generated for hardware version <a href="https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md"><code>1.5.0.3</code></a>.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">CPU Configuration   </th><th class="markdownTableHeadCenter">LEs   </th><th class="markdownTableHeadCenter">FFs   </th><th class="markdownTableHeadCenter">Memory bits   </th><th class="markdownTableHeadCenter">DSPs   </th><th class="markdownTableHeadCenter">f_max    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><code>rv32i</code>   </td><td class="markdownTableBodyCenter">1190   </td><td class="markdownTableBodyCenter">512   </td><td class="markdownTableBodyCenter">2048   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">120 MHz    </td></tr>
+<td class="markdownTableBodyLeft"><code>rv32i</code>   </td><td class="markdownTableBodyCenter">1190   </td><td class="markdownTableBodyCenter">512   </td><td class="markdownTableBodyCenter">1024   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">120 MHz    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft"><code>rv32i</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">1927   </td><td class="markdownTableBodyCenter">903   </td><td class="markdownTableBodyCenter">2048   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">123 MHz    </td></tr>
+<td class="markdownTableBodyLeft"><code>rv32i</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">1927   </td><td class="markdownTableBodyCenter">903   </td><td class="markdownTableBodyCenter">1024   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">123 MHz    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><code>rv32im</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">2471   </td><td class="markdownTableBodyCenter">1148   </td><td class="markdownTableBodyCenter">2048   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">120 MHz    </td></tr>
+<td class="markdownTableBodyLeft"><code>rv32im</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">2471   </td><td class="markdownTableBodyCenter">1148   </td><td class="markdownTableBodyCenter">1024   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">120 MHz    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft"><code>rv32imc</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">2716   </td><td class="markdownTableBodyCenter">1165   </td><td class="markdownTableBodyCenter">2048   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">120 MHz    </td></tr>
+<td class="markdownTableBodyLeft"><code>rv32imc</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">2716   </td><td class="markdownTableBodyCenter">1165   </td><td class="markdownTableBodyCenter">1024   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">120 MHz    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><code>rv32imac</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">2736   </td><td class="markdownTableBodyCenter">1168   </td><td class="markdownTableBodyCenter">2048   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">120 MHz    </td></tr>
+<td class="markdownTableBodyLeft"><code>rv32imac</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">2736   </td><td class="markdownTableBodyCenter">1168   </td><td class="markdownTableBodyCenter">1024   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">120 MHz    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft"><code>rv32imacb</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">3045   </td><td class="markdownTableBodyCenter">1260   </td><td class="markdownTableBodyCenter">2048   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">114 MHz   </td></tr>
+<td class="markdownTableBodyLeft"><code>rv32imacb</code> + <code>u</code> + <code>Zicsr</code> + <code>Zifencei</code>   </td><td class="markdownTableBodyCenter">3045   </td><td class="markdownTableBodyCenter">1260   </td><td class="markdownTableBodyCenter">1024   </td><td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyCenter">114 MHz   </td></tr>
 </table>
 <p>Setups with enabled "embedded CPU extension" <code>E</code> show the same LUT and FF utilization and identical f_max. However, the size of the register file is cut in half.</p>
 <h3><a class="anchor" id="autotoc_md13"></a>
 NEORV32 Processor-Internal Peripherals and Memories</h3>
-<p>Results generated for hardware version <a href="https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md"><code>1.4.9.10</code></a>.</p>
+<p>Results generated for hardware version <a href="https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md"><code>1.5.0.3</code></a>.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">Module   </th><th class="markdownTableHeadLeft">Description   </th><th class="markdownTableHeadRight">LEs   </th><th class="markdownTableHeadRight">FFs   </th><th class="markdownTableHeadRight">Memory bits   </th><th class="markdownTableHeadRight">DSPs    </th></tr>
@@ -339,7 +337,7 @@ NEORV32 Processor-Internal Peripherals and Memories</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyLeft">BUSSWITCH   </td><td class="markdownTableBodyLeft">Mux for CPU I &amp; D interfaces   </td><td class="markdownTableBodyRight">65   </td><td class="markdownTableBodyRight">8   </td><td class="markdownTableBodyRight">0   </td><td class="markdownTableBodyRight">0    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft">iCACHE   </td><td class="markdownTableBodyLeft">Proc.-int. nstruction cache (default 1x4x64 bytes)   </td><td class="markdownTableBodyRight">234   </td><td class="markdownTableBodyRight">156   </td><td class="markdownTableBodyRight">8 192   </td><td class="markdownTableBodyRight">0    </td></tr>
+<td class="markdownTableBodyLeft">i-CACHE   </td><td class="markdownTableBodyLeft">Proc.-int. nstruction cache (default 1x4x64 bytes)   </td><td class="markdownTableBodyRight">234   </td><td class="markdownTableBodyRight">156   </td><td class="markdownTableBodyRight">8 192   </td><td class="markdownTableBodyRight">0    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyLeft">CFU0   </td><td class="markdownTableBodyLeft">Custom functions unit 0   </td><td class="markdownTableBodyRight">-   </td><td class="markdownTableBodyRight">-   </td><td class="markdownTableBodyRight">-   </td><td class="markdownTableBodyRight">-    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -466,7 +464,7 @@ Getting Started</h2>
 Toolchain</h3>
 <p>At first you need the <b>RISC-V GCC toolchain</b>. You can either <a href="https://github.com/riscv/riscv-gnu-toolchain">download the sources</a> and build the toolchain by yourself, or you can download a prebuilt one and install it.</p>
 <p>To build the toolchain by yourself, follow the official <a href="https://github.com/riscv/riscv-gnu-toolchain">build instructions</a>. Make sure to use the <code>ilp32</code> or <code>ilp32e</code> ABI.</p>
-<p><b>Alternatively</b>, you can download a prebuilt toolchain. I have uploaded the toolchains I am using to GitHub. These toolchains were compiled on a 64-bit x86 Ubuntu 20.04 LTS (Ubuntu on Windows, actually). Download the toolchain of choice: <a href="https://github.com/stnolting/riscv_gcc_prebuilt">:octocat: github.com/stnolting/riscv_gcc_prebuilt</a></p>
+<p><b>Alternatively</b>, you can download a prebuilt toolchain. I have uploaded the toolchains I am using to GitHub. These toolchains were compiled on a 64-bit x86 Ubuntu 20.04 LTS (Ubuntu on Windows, actually). Download the toolchain of choice: <a href="https://github.com/stnolting/riscv-gcc-prebuilt">:octocat: github.com/stnolting/riscv-gcc-prebuilt</a></p>
 <p>You can also use the toolchains provided by <a href="https://github.com/sifive/freedom-tools/releases">SiFive</a>. These are 64-bit toolchains that can also emit 32-bit RISC-V code. They were compiled for more sophisticated machines (<code>imac</code>) so the according hardware extensions are <em>mandatory</em></p>
 <p>:warning: Keep in mind that – for instance – a <code>rv32imc</code> toolchain only provides library code compiled with compressed and <code>mul</code>/<code>div</code> instructions! Hence, this code cannot be executed (without emulation) on an architecture without these extensions!</p>
 <h3><a class="anchor" id="autotoc_md24"></a>
@@ -576,7 +574,7 @@ Limitation of Liability for External Links</h4>
 <h4><a class="anchor" id="autotoc_md34"></a>
 Proprietary  Notice</h4>
 <p>"Artix" and "Vivado" are trademarks of Xilinx Inc.</p>
-<p>"Cyclone", "Quartus Prime Lite" and "Avalon Bus" are trademarks of Intel Corporation.</p>
+<p>"Cyclone" and "Quartus Prime Lite" are trademarks of Intel Corporation.</p>
 <p>"iCE40", "UltraPlus" and "Radiant" are trademarks of Lattice Semiconductor Corporation.</p>
 <p>"AXI", "AXI4" and "AXI4-Lite" are trademarks of Arm Holdings plc.</p>
 <h2><a class="anchor" id="autotoc_md35"></a>
