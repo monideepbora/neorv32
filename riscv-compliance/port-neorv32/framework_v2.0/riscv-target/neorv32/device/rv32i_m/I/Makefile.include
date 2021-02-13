@@ -27,6 +27,7 @@ RUN_TARGET=\
 	sed -i '/MEM_INT_IMEM_USE/c\MEM_INT_IMEM_USE  => true, -- MOD. BY RISCV-COMPL. TEST SCRIPT' $(NEORV32_LOCAL_COPY)/sim/neorv32_tb.vhd; \
 	sed -i '/MEM_INT_IMEM_SIZE/c\MEM_INT_IMEM_SIZE  => 2*1024*1024, -- MOD. BY RISCV-COMPL. TEST SCRIPT' $(NEORV32_LOCAL_COPY)/sim/neorv32_tb.vhd; \
 	sed -i '/MEM_INT_IMEM_ROM/c\MEM_INT_IMEM_ROM  => true, -- MOD. BY RISCV-COMPL. TEST SCRIPT' $(NEORV32_LOCAL_COPY)/sim/neorv32_tb.vhd; \
+	find . -type f -exec touch {} +
 	make -C $(NEORV32_LOCAL_COPY)/sw/example/blink_led main.elf; \
 	cp -f $< $(NEORV32_LOCAL_COPY)/sw/example/blink_led/main.elf; \
 	make -C $(NEORV32_LOCAL_COPY)/sw/example/blink_led main.bin; \
