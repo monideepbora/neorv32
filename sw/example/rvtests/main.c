@@ -85,7 +85,7 @@ int main() {
 //console functions to output tests status
 void success()
 {
-    neorv32_uart_putc('\n');
+    //neorv32_uart_putc('\n');
     neorv32_uart_print("All tests passed \n$");
 }
 

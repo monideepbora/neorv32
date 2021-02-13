@@ -47,6 +47,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+--use std.env;
 
 library neorv32;
 use neorv32.neorv32_package.all;
@@ -348,6 +349,10 @@ begin
             if (sim_text_output_en_c = true) then
               write(line_text_v, character'val(char_v));
             end if;
+          end if;
+
+          if (char_v = 36) then
+            report "Calling 'finish'";
           end if;
 
           if (char_v = 10) then -- line break: write to screen and text file

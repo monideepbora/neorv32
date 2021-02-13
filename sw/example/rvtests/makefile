@@ -360,3 +360,4 @@ clean:
 clean_all: clean
 	@rm -f $(OBJ) $(IMAGE_GEN)
 	rm tests/RV32I/*.o
+	rm tests/start.o

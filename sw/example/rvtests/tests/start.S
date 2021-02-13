@@ -61,8 +61,7 @@ start:
 	n ## _ret:
 
 	TEST(lui)
-	TEST(auipc)
-
+/*
 	TEST(j)
 	TEST(jal)
 	TEST(jalr)
@@ -103,15 +102,15 @@ start:
 	TEST(or)
 	TEST(and)
 
-	TEST(simple)
+	TEST(simple) */
 
-	/* set stack pointer */
-	lui sp,(39312)>>12
+	/* set stack pointer 
+	lui sp,(39312)>>12 */
 
-	 /*set gp and tp*/ 
+	 /*set gp and tp 
 	lui gp, %hi(0xdeadbeef)
 	addi gp, gp, %lo(0xdeadbeef)
-	addi tp, gp, 0
+	addi tp, gp, 0 */
 
 	call success
 
