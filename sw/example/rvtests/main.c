@@ -91,7 +91,7 @@ void success()
 
 void failure()
 {
-    neorv32_uart_print("..Failure \n$"); 
+    neorv32_uart_print("..Failure\n$"); 
 }
 
 void OK()
