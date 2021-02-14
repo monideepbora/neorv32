@@ -199,7 +199,7 @@ tests/start.o: tests/start.S
 	$(TOOLCHAIN_PREFIX)gcc -c ${MARCH} ${MABI} -Os -o $@ $(GCC_FLAGS) $<
 
 $(addsuffix %.o,$(basename $(TEST_DIR_TARGET))): $(addsuffix %.S,$(basename $(TEST_DIR_TARGET))) tests/$(ARCH)/riscv_test.h tests/$(ARCH)/test_macros.h
-	$(TOOLCHAIN_PREFIX)gcc -fcommon -Os -c ${MARCH} ${MABI} -o $@ -DTEST_FUNC_NAME=$(notdir $(basename $<)) \
+	$(TOOLCHAIN_PREFIX)gcc -c ${MARCH} ${MABI} -o $@ -DTEST_FUNC_NAME=$(notdir $(basename $<)) \
 		-DTEST_FUNC_TXT='"$(notdir $(basename $<))"' -DTEST_FUNC_RET=$(notdir $(basename $<))_ret $<
 
 # Link object files and show memory utilization

@@ -61,7 +61,7 @@ start:
 	n ## _ret:
 
 	TEST(lui)
-/*
+
 	TEST(j)
 	TEST(jal)
 	TEST(jalr)
@@ -102,7 +102,7 @@ start:
 	TEST(or)
 	TEST(and)
 
-	TEST(simple) */
+	TEST(simple) 
 
 	/* set stack pointer 
 	lui sp,(39312)>>12 */

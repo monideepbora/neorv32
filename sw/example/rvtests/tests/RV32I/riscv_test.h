@@ -35,7 +35,6 @@ loop:	\
 	sw	a1,0(a2);
 
 #define RVTEST_PASS			\
-	lui sp,(39312)>>12; \
 	call OK; \
 	jal	zero,TEST_FUNC_RET;
 
