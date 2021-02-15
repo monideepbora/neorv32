@@ -60,7 +60,7 @@ architecture neorv32_tb_rtl of neorv32_tb is
   constant imem_size_c           : natural := 32*1024; -- size in bytes of processor-internal IMEM / external mem A
   constant dmem_size_c           : natural := 8*1024; -- size in bytes of processor-internal DMEM / external mem B
   constant f_clock_c             : natural := 100000000; -- main clock in Hz
-  constant baud_rate_c           : natural := 19200; -- simulation UART output baudrate
+  constant baud_rate_c           : natural := 115200; -- simulation UART output baudrate
   -- simulated external Wishbone memory A (can be used as external IMEM) --
   constant ext_mem_a_base_addr_c : std_ulogic_vector(31 downto 0) := x"00000000"; -- wishbone memory base address (external IMEM base)
   constant ext_mem_a_size_c      : natural := imem_size_c; -- wishbone memory size in bytes
@@ -178,12 +178,12 @@ begin
     USER_CODE                    => x"12345678",   -- custom user code
     HW_THREAD_ID                 => x"00000000",   -- hardware thread id (hartid)
     -- RISC-V CPU Extensions --
-    CPU_EXTENSION_RISCV_A        => true,          -- implement atomic extension?
-    CPU_EXTENSION_RISCV_B        => true,          -- implement bit manipulation extensions?
-    CPU_EXTENSION_RISCV_C        => true,          -- implement compressed extension?
+    CPU_EXTENSION_RISCV_A        => false,          -- implement atomic extension?
+    CPU_EXTENSION_RISCV_B        => false,          -- implement bit manipulation extensions?
+    CPU_EXTENSION_RISCV_C        => false,          -- implement compressed extension?
     CPU_EXTENSION_RISCV_E        => false,         -- implement embedded RF extension?
-    CPU_EXTENSION_RISCV_M        => true,          -- implement muld/div extension?
-    CPU_EXTENSION_RISCV_U        => true,          -- implement user mode extension?
+    CPU_EXTENSION_RISCV_M        => false,          -- implement muld/div extension?
+    CPU_EXTENSION_RISCV_U        => false,          -- implement user mode extension?
     CPU_EXTENSION_RISCV_Zicsr    => true,          -- implement CSR system?
     CPU_EXTENSION_RISCV_Zifencei => true,          -- implement instruction stream sync.?
     -- Extension Options --
@@ -207,7 +207,7 @@ begin
     ICACHE_BLOCK_SIZE            => 64,            -- i-cache: block size in bytes (min 4), has to be a power of 2
     ICACHE_ASSOCIATIVITY         => 2,             -- i-cache: associativity / number of sets (1=direct_mapped), has to be a power of 2
     -- External memory interface --
-    MEM_EXT_EN                   => true,          -- implement external memory bus interface?
+    MEM_EXT_EN                   => false,          -- implement external memory bus interface?
     -- Processor peripherals --
     IO_GPIO_EN                   => true,          -- implement general purpose input/output port unit (GPIO)?
     IO_MTIME_EN                  => true,          -- implement machine system timer (MTIME)?

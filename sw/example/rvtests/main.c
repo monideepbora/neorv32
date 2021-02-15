@@ -63,7 +63,7 @@ int main() {
 
   // capture all exceptions and give debug info via UART
   // this is not required, but keeps us safe
-  //neorv32_rte_setup();
+  neorv32_rte_setup();
 
   // init UART at default baud rate, no parity bits, no rx interrupt, no tx interrupt
   neorv32_uart_setup(BAUD_RATE, 0b00, 0, 0);

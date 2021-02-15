@@ -2,22 +2,22 @@
 .section .text
 .balign 4
 .global blink_led_asm
+.global tdat1
 
 blink_led_asm:
 
   /* base address of GPIO controller's output port is passed as argument (in a0)*/
   sw   zero, 0(a0) /* clear output port */
-
+  call neorv32_uart_print
   li   t1, 0 /* initialize counter */
 
 
 blink_loop:
-  andi t1, t1, 255 /* apply 8-bit mask */
+  andi t1, t1, tdat1 /* apply 8-bit mask */
   sw   t1, 0(a0)   /* output current counter value */
   addi t1, t1, 1   /* increment counter */
 
   jal  ra, blink_delay /* call delay function */
-
   j    blink_loop
 
 
@@ -33,5 +33,10 @@ blink_delay_loop:
 
 blink_delay_end:
   ret
+
+
+ .data
+ tdat1:  .byte 0xff
+
 
 .end

@@ -75,13 +75,13 @@ start:
 
 	TEST(lb)
 	TEST(lh)
-	TEST(lw)
+	/*TEST(lw)
 	TEST(lbu)
 	TEST(lhu)
 
 	TEST(sb)
 	TEST(sh)
-	TEST(sw)
+	TEST(sw)*/
 
 	TEST(addi)
 	TEST(slti)

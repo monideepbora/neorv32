@@ -49,7 +49,7 @@
 /** UART BAUD rate */
 #define BAUD_RATE 19200
 /** Use the custom ASM version for blinking the LEDs defined (= uncommented) */
-//#define USE_ASM_VERSION
+#define USE_ASM_VERSION
 /**@}*/
 
 

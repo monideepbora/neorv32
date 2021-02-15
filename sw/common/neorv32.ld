@@ -179,6 +179,7 @@ SECTIONS
   .dynamic        : { *(.dynamic) }
   .data1          : { *(.data1) }
   .got            : { *(.got.plt) *(.igot.plt) *(.got) *(.igot) }
+
   .data :
   {
     __DATA_BEGIN__ = .;
