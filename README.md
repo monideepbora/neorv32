@@ -1,5 +1,22 @@
-[![NEORV32](https://raw.githubusercontent.com/stnolting/neorv32/master/docs/figures/neorv32_logo.png)](https://github.com/stnolting/neorv32)
+# NEORV32 -- !WIP
 
+The Makefile in the root directory targets the longer and shorter versions of risv-tests
+
+The below command targets the advanced/longer form of tests developed by Imperas and ported by the author.
+```
+make long
+```
+
+The below command targets a simpler version of the tests which are shorter in duration.
+```
+make short
+```
+
+Note: Make sure the path to the `bin` folder of gnu-riscv-toolchain is in $PATH.
+
+----The original README of the core follows-----
+
+[![NEORV32](https://raw.githubusercontent.com/stnolting/neorv32/master/docs/figures/neorv32_logo.png)](https://github.com/stnolting/neorv32)
 # The NEORV32 RISC-V Processor
 
 [![Processor Check](https://github.com/stnolting/neorv32/workflows/Processor%20Check/badge.svg)](https://github.com/stnolting/neorv32/actions?query=workflow%3A%22Processor+Check%22)
