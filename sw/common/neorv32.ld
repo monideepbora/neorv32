@@ -54,7 +54,7 @@ MEMORY
 {
 /* "rom" section: first value of ORIGIN/LENGHT => bootloader ROM; second value of ORIGIN/LENGHT => instruction memory */
 
-  rom  (rx) : ORIGIN = DEFINED(make_bootloader) ? 0xFFFF0000 : 0x00000000, LENGTH = DEFINED(make_bootloader) ? 4*1024 : 32*1024
+  rom  (rx) : ORIGIN = DEFINED(make_bootloader) ? 0xFFFF0000 : 0x00000000, LENGTH = DEFINED(make_bootloader) ? 4*1024 : 16*1024
   ram (rwx) : ORIGIN = 0x80000000, LENGTH = 8*1024
 }
 /* ************************************************************************* */

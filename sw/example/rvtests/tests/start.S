@@ -60,13 +60,13 @@ start:
 	.global n ## _ret; \
 	n ## _ret:
 
-	TEST(lui)
+	/*TEST(lui)
 
 	TEST(j)
 	TEST(jal)
-	TEST(jalr)
+	TEST(jalr)*/
 
-	TEST(beq)
+	/*TEST(beq)
 	TEST(bne)
 	TEST(blt)
 	TEST(bge)
@@ -74,16 +74,16 @@ start:
 	TEST(bgeu)
 
 	TEST(lb)
-	TEST(lh)
-	/*TEST(lw)
+	TEST(lh) 
+	TEST(lw)
 	TEST(lbu)
-	TEST(lhu)
+	TEST(lhu)*/
 
 	TEST(sb)
-	TEST(sh)
+	/*TEST(sh)
 	TEST(sw)*/
 
-	TEST(addi)
+	/*TEST(addi)
 	TEST(slti)
 	TEST(xori)
 	TEST(ori)
@@ -102,7 +102,7 @@ start:
 	TEST(or)
 	TEST(and)
 
-	TEST(simple) 
+	TEST(simple) */
 
 	/* set stack pointer 
 	lui sp,(39312)>>12 */
