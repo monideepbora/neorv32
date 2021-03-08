@@ -24,31 +24,31 @@ RVTEST_CODE_BEGIN
 
   # Test with negative offset
 
-  TEST_ST_OP( 6, lw, sw, 0x00aa00aa, -12, tdat8 );
-  TEST_ST_OP( 7, lw, sw, 0xaa00aa00, -8,  tdat8 );
-  TEST_ST_OP( 8, lw, sw, 0x0aa00aa0, -4,  tdat8 );
-  TEST_ST_OP( 9, lw, sw, 0xa00aa00a, 0,   tdat8 );
+ /*TEST_ST_OP( 6, lw, sw, 0x00aa00aa, -12, tdat8 );
+  TEST_ST_OP( 7, lw, sw, 0xaa00aa00, -8,  tdat10 );*/
+  TEST_ST_OP( 8, lw, sw, 0x0aa00aa0, -4,  tdat4 );
+  TEST_ST_OP( 9, lw, sw, 0xa00aa00a, 0,   tdat );
 
   # Test with a negative base
 
-  TEST_CASE( 10, x3, 0x12345678, \
-    la  x1, tdat9; \
+ /* TEST_CASE( 10, x3, 0x12345678, \
+    la  x1, tdat; \
     li  x2, 0x12345678; \
     addi x4, x1, -32; \
     sw x2, 32(x4); \
     lw x3, 0(x1); \
-  )
+  )*/
 
   # Test with unaligned base
 
-  TEST_CASE( 11, x3, 0x58213098, \
-    la  x1, tdat9; \
+ /* TEST_CASE( 11, x3, 0x58213098, \
+    la  x1, tdat; \
     li  x2, 0x58213098; \
     addi x1, x1, -3; \
     sw x2, 7(x1); \
-    la  x4, tdat10; \
+    la  x4, tdat; \
     lw x3, 0(x4); \
-  )
+  )*/
 
   #-------------------------------------------------------------
   # Bypassing tests

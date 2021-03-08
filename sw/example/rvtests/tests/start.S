@@ -71,16 +71,16 @@ start:
 	TEST(blt)
 	TEST(bge)
 	TEST(bltu)
-	TEST(bgeu)
+	TEST(bgeu)*/
 
 	TEST(lb)
-	TEST(lh) 
+	/*TEST(lh) 
 	TEST(lw)
 	TEST(lbu)
-	TEST(lhu)*/
+	TEST(lhu)
 
 	TEST(sb)
-	/*TEST(sh)
+	TEST(sh)
 	TEST(sw)*/
 
 	/*TEST(addi)

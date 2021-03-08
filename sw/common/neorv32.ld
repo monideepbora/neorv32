@@ -185,7 +185,7 @@ SECTIONS
     __DATA_BEGIN__ = .;
     __SDATA_BEGIN__ = .;
     *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
-
+  
     *(.data .data.* .gnu.linkonce.d.*)
     SORT(CONSTRUCTORS)
 
@@ -200,8 +200,8 @@ SECTIONS
      *(.tdata .tdata.* .gnu.linkonce.td.*)
 
 
-    /* finish section on WORD boundary */
-    . = ALIGN(4);
+    /* finish section on WORD boundary 
+    . = ALIGN(4);*/
 
     _edata = .; PROVIDE (edata = .);
     . = .;
