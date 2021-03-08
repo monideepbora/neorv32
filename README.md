@@ -1,3 +1,10 @@
+
+
+The `test_run.sh` script runs the RISCV tests for the RV32I instructions for the VHDL RTL.
+
+
+
+--------------------------------------------------------
 [![NEORV32](https://raw.githubusercontent.com/stnolting/neorv32/master/docs/figures/neorv32_logo.png)](https://github.com/stnolting/neorv32)
 
 # The NEORV32 RISC-V Processor

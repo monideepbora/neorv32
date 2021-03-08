@@ -1,18 +1,12 @@
 ## NEORV32 Software Framework
 
 This folder provides the core of the NEORV32 software framework. This is a short description of the main folders.
-
-### [`bootloader`](https://github.com/stnolting/neorv32/tree/master/sw/bootloader)
-
-Source(s) of the default NEORV32 bootloader. A pre-built image is already installed into the rtl design via the
-`rtl/core/neorv32_bootloader_image.vhd` file.
-
 ### [`common`](https://github.com/stnolting/neorv32/tree/master/sw/common)
 
 NEORV32-specific common files for all bootloader and application programs: linker script for executable generation and
 processor start-up code.
 
-### [`example`](https://github.com/stnolting/neorv32/tree/master/sw/example)
+### [`application`](https://github.com/stnolting/neorv32/tree/master/sw/example)
 
 Several example programs for testing and for getting started.
 
@@ -25,3 +19,4 @@ the native GCC when invoking one of the application compilation makefiles.
 ### [`lib`](https://github.com/stnolting/neorv32/tree/master/sw/lib)
 
 Core libraries (sources and header files) and helper functions for using the processor peripherals and the CPU itself.
+<!--  -->
