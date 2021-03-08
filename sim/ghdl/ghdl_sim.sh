@@ -4,7 +4,7 @@
 set -e
 
 # Default simulation configuration
-SIM_CONFIG=--stop-time=6ms
+SIM_CONFIG=--stop-time=1ms
 
 # Project home folder
 homedir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
@@ -16,23 +16,25 @@ srcdir_sim=$homedir/sim
 srcdir_top_templates=$homedir/rtl/top_templates
 
 # Show GHDL version
-ghdl -v
+# ghdl -v
 
 # Simulation time define by user?
-echo ""
-if [ -z ${1} ]; then echo "Using default simulation config: $SIM_CONFIG"; else SIM_CONFIG=$1; echo "Using user simulation config: $SIM_CONFIG"; fi
-echo ""
+# echo ""
+# if [ -z ${1} ]; then echo "Using default simulation config: $SIM_CONFIG"; else SIM_CONFIG=$1; echo "Using user simulation config: $SIM_CONFIG"; fi
+# echo ""
 
 # List files
-echo "Simulation source files:"
-ls -l $srcdir_core
-ls -l $srcdir_sim
-ls -l $srcdir_top_templates
+# echo "Simulation source files:"
+# ls -l $srcdir_core
+# ls -l $srcdir_sim
+# ls -l $srcdir_top_templates
 
 # Just a hint
-echo ""
-echo "Tip: Compile application with USER_FLAGS+=-DUART_SIM_MODE to auto-enable UART's SIM MODE."
-echo ""
+# echo ""
+# echo "Tip: Compile application with USER_FLAGS+=-DUART_SIM_MODE to auto-enable UART's SIM MODE."
+# echo ""
+
+echo "Elaborating the VHDL sources..."
 
 # Analyse sources; libs and images at first!
 ghdl -a --work=neorv32 $srcdir_core/neorv32_package.vhd
@@ -65,9 +67,9 @@ ghdl -a --work=neorv32 $srcdir_core/neorv32_uart.vhd
 ghdl -a --work=neorv32 $srcdir_core/neorv32_wdt.vhd
 ghdl -a --work=neorv32 $srcdir_core/neorv32_wishbone.vhd
 #
-ghdl -a --work=neorv32 $srcdir_top_templates/neorv32_test_setup.vhd
-ghdl -a --work=neorv32 $srcdir_top_templates/neorv32_top_axi4lite.vhd
-ghdl -a --work=neorv32 $srcdir_top_templates/neorv32_top_stdlogic.vhd
+#ghdl -a --work=neorv32 $srcdir_top_templates/neorv32_test_setup.vhd
+#ghdl -a --work=neorv32 $srcdir_top_templates/neorv32_top_axi4lite.vhd
+#ghdl -a --work=neorv32 $srcdir_top_templates/neorv32_top_stdlogic.vhd
 #
 ghdl -a --work=neorv32 $srcdir_sim/neorv32_tb.vhd
 

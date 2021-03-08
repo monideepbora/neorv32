@@ -352,7 +352,7 @@ begin
           end if;
 
           if (char_v = 36) then
-            report "Calling 'finish'";
+            report "Finish";
           end if;
 
           if (char_v = 10) then -- line break: write to screen and text file
