@@ -1,5 +1,8 @@
 #!/bin/bash
 
+STARTTIME=$(date +%s)
+echo "$STARTTIME"
+
 ## declare an array variable
 declare -a arr=("add" 
                 "addi" 
@@ -50,7 +53,7 @@ do
    make --silent -C sw/application/rvtests clean_all
    make --silent -C sw/application/rvtests all
    cd sim/ghdl/
-   rm -f *.o
+   rm  -f !*.sh
    
     if bash ghdl_sim.sh; then
         printf "Tests for \"$i\" instruction were successsful\n"
@@ -63,5 +66,9 @@ done
 
 cd ../..
 make --silent -C sw/application/rvtests clean_all
-rm -f sim/ghdl/*.o 
+rm -f !sim/ghdl/*.sh
 printf "\n All riscv-tests successfully done.\n"
+
+ENDTIME=$(date +%s)
+
+echo "It takes $(($ENDTIME - $STARTTIME)) seconds to complete this task..."
